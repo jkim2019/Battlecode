@@ -14,6 +14,7 @@ public strictfp class RobotPlayer {
     static Direction south = Direction.getSouth();
     static Direction west = Direction.getWest();
     static Direction north = Direction.getNorth();
+
     /*
         run() is called when a robot is instantiated in Battlecode. 
     */
@@ -29,12 +30,6 @@ public strictfp class RobotPlayer {
                 break;
             case GARDENER:
                 runGardener();
-                break;
-            case SOLDIER:
-                runSoldier();
-                break;
-            case LUMBERJACK:
-                runLumberjack();
                 break;
             case SCOUT:
                 runScout();
@@ -78,25 +73,28 @@ public strictfp class RobotPlayer {
     */
     static void runGardener() throws GameActionException {
         System.out.println("Gardener running");
-        int turnNumber = rc.getRoundNum();
 
         try {
+            int turnNumber = rc.getRoundNum();
 
-            // build a Scout
-            if (rc.canBuildRobot(RobotType.SCOUT, north)) {
-                rc.buildRobot(RobotType.SCOUT, north);
-            }
+            // if on the second turn, spawn a Scout
+            if (turnNumber == 2) {
+                // build a Scout
+                if (rc.canBuildRobot(RobotType.SCOUT, north)) {
+                    rc.buildRobot(RobotType.SCOUT, north);
+                }
 
-            else if (rc.canBuildRobot(RobotType.SCOUT, east)) {
-                rc.buildRobot(RobotType.SCOUT, east);
-            }
+                else if (rc.canBuildRobot(RobotType.SCOUT, east)) {
+                    rc.buildRobot(RobotType.SCOUT, east);
+                }
 
-            else if (rc.canBuildRobot(RobotType.SCOUT, south)) {
-                rc.buildRobot(RobotType.SCOUT, south);
-            }
+                else if (rc.canBuildRobot(RobotType.SCOUT, south)) {
+                    rc.buildRobot(RobotType.SCOUT, south);
+                }
 
-            else if (rc.canBuildRobot(RobotType.SCOUT, west)) {
-                rc.buildRobot(RobotType.SCOUT, west);
+                else if (rc.canBuildRobot(RobotType.SCOUT, west)) {
+                    rc.buildRobot(RobotType.SCOUT, west);
+                }
             }
 
             // wait until next turn, then perform again
@@ -107,14 +105,6 @@ public strictfp class RobotPlayer {
             e.printStackTrace();
         }
 
-    }
-
-    static void runSoldier() throws GameActionException {
-        System.out.println("Soldier running");
-    }
-
-    static void runLumberjack() throws GameActionException {
-        System.out.println("Lumberjack running");
     }
 
     static void runScout() throws GameActionException {
