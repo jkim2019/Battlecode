@@ -1,8 +1,0 @@
-client/*
-build/**/*
-gradle/**/*
-gradlew.bat
-build.gradle
-gradlew
-.*
-!/.idea/**/*
