@@ -1,0 +1,10 @@
+products:
+   test/examplefuncsplayer/RobotPlayerTest.java -> build/tests/examplefuncsplayer/RobotPlayerTest.class
+binary dependencies:
+   test/examplefuncsplayer/RobotPlayerTest.java -> /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/rt.jar
+   test/examplefuncsplayer/RobotPlayerTest.java -> /Users/John1/.gradle/caches/modules-2/files-2.1/org.battlecode/battlecode/2017.1.2.2/ab392c0671ba645dbb8ee1ba49dfd119dc63bd54/battlecode-2017.1.2.2.jar
+source dependencies:
+   test/examplefuncsplayer/RobotPlayerTest.java -> test/examplefuncsplayer/RobotPlayerTest.java
+external dependencies:
+class names:
+   test/examplefuncsplayer/RobotPlayerTest.java -> examplefuncsplayer.RobotPlayerTest
