@@ -1,12 +1,12 @@
 products:
-   src/examplefuncsplayer/RobotPlayer.java -> build/classes/examplefuncsplayer/RobotPlayer$1.class
-   src/examplefuncsplayer/RobotPlayer.java -> build/classes/examplefuncsplayer/RobotPlayer.class
+   src/RobotPlayer/RobotPlayer.java -> build/classes/RobotPlayer/RobotPlayer$1.class
+   src/RobotPlayer/RobotPlayer.java -> build/classes/RobotPlayer/RobotPlayer.class
 binary dependencies:
-   src/examplefuncsplayer/RobotPlayer.java -> /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/rt.jar
-   src/examplefuncsplayer/RobotPlayer.java -> /Users/John1/.gradle/caches/modules-2/files-2.1/org.battlecode/battlecode/2017.1.2.2/ab392c0671ba645dbb8ee1ba49dfd119dc63bd54/battlecode-2017.1.2.2.jar
+   src/RobotPlayer/RobotPlayer.java -> /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/rt.jar
+   src/RobotPlayer/RobotPlayer.java -> /Users/John1/.gradle/caches/modules-2/files-2.1/org.battlecode/battlecode/2017.1.2.2/ab392c0671ba645dbb8ee1ba49dfd119dc63bd54/battlecode-2017.1.2.2.jar
 source dependencies:
-   src/examplefuncsplayer/RobotPlayer.java -> src/examplefuncsplayer/RobotPlayer.java
+   src/RobotPlayer/RobotPlayer.java -> src/RobotPlayer/RobotPlayer.java
 external dependencies:
 class names:
-   src/examplefuncsplayer/RobotPlayer.java -> examplefuncsplayer.RobotPlayer
-   src/examplefuncsplayer/RobotPlayer.java -> examplefuncsplayer.RobotPlayer$1
+   src/RobotPlayer/RobotPlayer.java -> RobotPlayer.RobotPlayer
+   src/RobotPlayer/RobotPlayer.java -> RobotPlayer.RobotPlayer$1

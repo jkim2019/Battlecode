@@ -2,6 +2,8 @@ package RobotPlayer;
 
 import battlecode.common.*;
 
+import java.util.*;
+
 /*
     This instance of RobotPlayer will test whether or not a scout is damaged when partially
     occupying a tree which is subsequently hit by a bullet.
@@ -38,7 +40,7 @@ public strictfp class RobotPlayer {
 
     /*
         runArchon() will have to do very little, as it is not involved in this test
-        other than spawning a Gardener
+        other than attempting to spawn a Gardener every 50 turns
     */
     static void runArchon() throws GameActionException {
         System.out.println("Archon running");
@@ -46,24 +48,22 @@ public strictfp class RobotPlayer {
         while (true) {
 
             try {
+                if (rc.getRoundNum() % 50 == 1) {
 
-                // build a Gardener
-                if (rc.canHireGardener(east)) {
-                    rc.hireGardener(east);
+                    // attempt to spawn Gardener in first available location (NESW)
+                    Direction dir = Direction.getNorth();
+
+                    while (!rc.canHireGardener(dir)) {
+                        dir.rotateRightDegrees(45);
+                    }
+
+                    rc.hireGardener(dir);
                 }
-
-                MapLocation myLocation = rc.getLocation();
-                rc.broadcast(0,(int)myLocation.x);
-                rc.broadcast(1,(int)myLocation.y);
-
-                // wait until next turn, then perform again
-                Clock.yield();
 
             } catch (Exception e) {
                 System.out.println("Archon Exception");
                 e.printStackTrace();
             }
-
         }
     }
 
@@ -75,27 +75,26 @@ public strictfp class RobotPlayer {
         System.out.println("Gardener running");
 
         try {
-            int turnNumber = rc.getRoundNum();
+            // spawn two Scouts on the second turn
+            if (rc.getRoundNum() == 2) {
+                Direction dir = north;
 
-            // if on the second turn, spawn a Scout
-            if (turnNumber == 2) {
-                // build a Scout
-                if (rc.canBuildRobot(RobotType.SCOUT, north)) {
-                    rc.buildRobot(RobotType.SCOUT, north);
-                }
-
-                else if (rc.canBuildRobot(RobotType.SCOUT, east)) {
-                    rc.buildRobot(RobotType.SCOUT, east);
-                }
-
-                else if (rc.canBuildRobot(RobotType.SCOUT, south)) {
-                    rc.buildRobot(RobotType.SCOUT, south);
-                }
-
-                else if (rc.canBuildRobot(RobotType.SCOUT, west)) {
-                    rc.buildRobot(RobotType.SCOUT, west);
+                // build two Scouts
+                for(int count = 0; count < 2; count++){
+                    while (!rc.canBuildRobot(RobotType.SCOUT, dir)) {
+                        dir.rotateRightDegrees(45);
+                    }
+                    rc.buildRobot(RobotType.SCOUT, dir);
                 }
             }
+            // build trees and soldiers
+            else {
+                Direction dir = north;
+                if (rc.canPlantTree(dir)) {
+
+                }
+            }
+
 
             // wait until next turn, then perform again
             Clock.yield();
@@ -111,27 +110,37 @@ public strictfp class RobotPlayer {
         System.out.println("Scout running");
 
         while (true) {
-
             try {
 
-                // build a Scout
-                if (rc.canBuildRobot(RobotType.SCOUT, east)) {
-                    rc.buildRobot(RobotType.SCOUT, east);
-                }
-
-                // build a tree
-                if (rc.canPlantTree(north)) {
-                    rc.plantTree(north);
-                }
 
                 // wait until next turn, then perform again
                 Clock.yield();
                 
             } catch (Exception e) {
-                System.out.println("Gardener Exception");
+                System.out.println("Scout Exception");
                 e.printStackTrace();
             }
 
         }
     }
+}
+
+class RobotMap {
+    List<RobotInfo> map;
+    /**
+     *
+     * @param sensedRobots : contains RobotInfo
+     *
+     */
+    void addLocation(RobotInfo[] sensedRobots) {
+        for (RobotInfo sensedRobot : sensedRobots) {
+            map.add(sensedRobot);
+        }
+    }
+//    String translate(RobotInfo[] robotSummary) {
+//        String robotID = "";
+//        for (RobotInfo robot : robotSubSummary) {
+//
+//        }
+//    }
 }
